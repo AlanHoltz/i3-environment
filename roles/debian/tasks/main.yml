@@ -1,0 +1,81 @@
+- name: Install neccesary dependencies
+  ansible.builtin.apt:
+    pkg:
+      - i3-wm
+      - rofi
+      - polybar
+      - picom
+      - neofetch
+      - htop
+      - alacritty
+      - git
+      - feh
+      - bat
+      - redshift
+    update_cache: true
+  become: true
+
+- name: Create config directory
+  ansible.builtin.file:
+    path: /home/aholtz/.config
+    state: directory
+    mode: '0755'
+
+- name: Clone polybar-themes repo
+  ansible.builtin.git:
+    repo: 'https://github.com/adi1090x/polybar-themes'
+    dest: /home/aholtz/polybar-themes/
+    depth: 1
+    version: master
+
+- name: Launch polybar setup.sh
+  ansible.builtin.command: /home/aholtz/polybar-themes/setup.sh
+  changed_when: false
+  args:
+    stdin: "1"
+    chdir: /home/aholtz/polybar-themes/
+
+- name: Delete polybar-themes repo
+  ansible.builtin.file:
+    path: /home/aholtz/polybar-themes
+    state: absent
+
+- name: Copy initial background image
+  ansible.builtin.copy:
+    src: initial_bg.png
+    dest: /home/aholtz/Downloads
+    mode: "0744"
+
+- name: Set initial background
+  ansible.builtin.command: feh --bg-scale /home/aholtz/Downloads/initial_bg.png
+  changed_when: false
+  environment:
+    DISPLAY: :0
+
+- name: Import tasks
+  ansible.builtin.import_tasks: configure_zsh.yml
+
+- name: Download and install Chrome
+  ansible.builtin.apt:
+    deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  become: true
+
+- name: Import tasks
+  ansible.builtin.import_tasks: configure_vs_code.yml
+
+- name: Copy config files
+  ansible.builtin.copy:
+    src: config.zip
+    dest: /home/aholtz/
+    mode: "0744"
+
+- name: Extract config files
+  ansible.builtin.unarchive:
+    src: /home/aholtz/config.zip
+    dest: /home/aholtz/
+    remote_src: true
+
+- name: Delete config zip
+  ansible.builtin.file:
+    path: /home/aholtz/config.zip
+    state: absent

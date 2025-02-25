@@ -1,0 +1,19 @@
+- name: Install Visual Studio Code
+  ansible.builtin.script: install_vs_code.sh
+
+- name: Install Visual Studio Code extensions
+  ansible.builtin.shell: "code --install-extension {{ item }}"
+  changed_when: false
+  loop:
+    - redhat.ansible
+    - eamodio.gitlens
+    - s-nlf-fh.glassit
+    - pkief.material-icon-theme
+    - ms-python.vscode-pylance
+    - ms-python.python
+    - ms-python.debugpy
+    - ms-vscode-remote.remote-ssh
+    - ms-vscode-remote.remote-ssh-edit
+    - ms-vscode.remote-explorer
+    - ajshortt.tokyo-hack
+    - redhat.vscode-yaml
