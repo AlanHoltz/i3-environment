@@ -1,5 +1,5 @@
 ---
-- name: Prepare Debian-based 13-wm environment
+- name: Prepare Ubuntu-based 13-wm environment
   hosts: test
   roles:
-    - debian
+    - ubuntu

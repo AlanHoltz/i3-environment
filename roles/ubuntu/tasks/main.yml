@@ -12,6 +12,8 @@
       - feh
       - bat
       - redshift
+      - virtualbox
+      - direnv
     update_cache: true
   become: true
 
@@ -62,6 +64,10 @@
 
 - name: Import tasks
   ansible.builtin.import_tasks: configure_vs_code.yml
+
+- name: Install Vagrant
+  ansible.builtin.script: install_vagrant.sh
+  tags: test
 
 - name: Copy config files
   ansible.builtin.copy:

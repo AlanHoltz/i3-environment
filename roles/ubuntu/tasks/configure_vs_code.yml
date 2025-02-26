@@ -17,3 +17,8 @@
     - ms-vscode.remote-explorer
     - ajshortt.tokyo-hack
     - redhat.vscode-yaml
+    - bscan.perlnavigator
+    - charliermarsh.ruff
+    - batisteo.vscode-django
+    - monosans.djlint
+    - esbenp.prettier-vscode
