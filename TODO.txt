@@ -1,4 +1,3 @@
-- Utilizar variables para referirse a /home/aholtz
 - Configuración condicional de zsh
 - Crear role de Arch
 - En caso de ser necesario, centralizar lo esencial para ser consumido por ambos roles

@@ -3,3 +3,5 @@
   hosts: test
   roles:
     - ubuntu
+  vars_files:
+    - vars.yml
