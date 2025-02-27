@@ -1,3 +1,4 @@
+---
 - name: Clone polybar-themes repo
   ansible.builtin.git:
     repo: "https://github.com/adi1090x/polybar-themes"

@@ -1,3 +1,4 @@
+---
 - name: Install zsh
   ansible.builtin.apt:
     name: zsh
@@ -27,18 +28,18 @@
 
 - name: Install zsh-autosuggestions plugin
   ansible.builtin.git:
-    repo: 'https://github.com/zsh-users/zsh-autosuggestions'
+    repo: "https://github.com/zsh-users/zsh-autosuggestions"
     dest: "{{ user_home }}/.oh-my-zsh/plugins/zsh-autosuggestions"
     version: master
 
 - name: Install zsh-syntax-highlighting plugin
   ansible.builtin.git:
-    repo: 'https://github.com/zsh-users/zsh-syntax-highlighting'
+    repo: "https://github.com/zsh-users/zsh-syntax-highlighting"
     dest: "{{ user_home }}/.oh-my-zsh/plugins/zsh-syntax-highlighting"
     version: master
 
 - name: Install fast-syntax-highlighting plugin
   ansible.builtin.git:
-    repo: 'https://github.com/zdharma-continuum/fast-syntax-highlighting'
+    repo: "https://github.com/zdharma-continuum/fast-syntax-highlighting"
     dest: "{{ user_home }}/.oh-my-zsh/plugins/fast-syntax-highlighting"
     version: master

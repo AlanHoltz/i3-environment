@@ -1,3 +1,4 @@
+---
 - name: Install neccesary apt packages
   ansible.builtin.apt:
     pkg:

@@ -1,7 +1,9 @@
 ---
+
 - name: Prepare Ubuntu-based 13-wm environment
   hosts: test
   roles:
     - ubuntu
   vars_files:
-    - vars.yml
+    - vars/ssh_keys.yml
+    - vars/common.yml

@@ -1,3 +1,5 @@
+---
+
 - name: Create config directory
   ansible.builtin.file:
     path: "{{ user_home }}/.config"
@@ -15,3 +17,4 @@
 
 - name: Import tasks
   ansible.builtin.import_tasks: copy_ssh_keys.yml
+  tags: test

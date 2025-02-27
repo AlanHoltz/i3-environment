@@ -1,3 +1,4 @@
+---
 - name: Copy config files zip
   ansible.builtin.copy:
     src: config.zip
