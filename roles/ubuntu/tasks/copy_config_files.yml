@@ -1,0 +1,16 @@
+- name: Copy config files zip
+  ansible.builtin.copy:
+    src: config.zip
+    dest: "{{ user_home }}"
+    mode: "0744"
+
+- name: Extract config files
+  ansible.builtin.unarchive:
+    src: "{{ user_home }}/config.zip"
+    dest: "{{ user_home }}"
+    remote_src: true
+
+- name: Delete config files zip
+  ansible.builtin.file:
+    path: "{{ user_home }}/config.zip"
+    state: absent

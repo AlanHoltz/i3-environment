@@ -1,0 +1,30 @@
+- name: Clone polybar-themes repo
+  ansible.builtin.git:
+    repo: "https://github.com/adi1090x/polybar-themes"
+    dest: "{{ user_home }}/polybar-themes/"
+    depth: 1
+    version: master
+
+- name: Launch polybar setup.sh
+  ansible.builtin.command: "{{ user_home }}/polybar-themes/setup.sh"
+  changed_when: false
+  args:
+    stdin: "1"
+    chdir: "{{ user_home }}/polybar-themes/"
+
+- name: Delete polybar-themes repo
+  ansible.builtin.file:
+    path: "{{ user_home }}/polybar-themes"
+    state: absent
+
+- name: Copy initial background image
+  ansible.builtin.copy:
+    src: initial_bg.png
+    dest: "{{ user_home }}/Downloads"
+    mode: "0744"
+
+- name: Set initial background
+  ansible.builtin.command: "feh --bg-scale {{ user_home }}/Downloads/initial_bg.png"
+  changed_when: false
+  environment:
+    DISPLAY: :0

@@ -4,3 +4,4 @@
 - name: Install Vagrant plugins
   ansible.builtin.command: vagrant plugin install vagrant-vbguest vagrant-disksize
   changed_when: false
+  
