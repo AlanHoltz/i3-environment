@@ -16,6 +16,7 @@
       - virtualbox
       - direnv
       - lxappearance
+      - openvpn-systemd-resolved
     update_cache: true
   become: true
 

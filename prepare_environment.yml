@@ -1,7 +1,6 @@
 ---
-
 - name: Prepare Ubuntu-based 13-wm environment
-  hosts: test
+  hosts: test_vm
   roles:
     - ubuntu
   vars_files:

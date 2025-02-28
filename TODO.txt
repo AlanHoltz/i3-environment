@@ -1,3 +1,2 @@
-- Configuración condicional de zsh
 - Crear role de Arch
 - En caso de ser necesario, centralizar lo esencial para ser consumido por ambos roles

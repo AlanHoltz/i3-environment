@@ -1,8 +1,8 @@
 [local]
 localhost ansible_connection=local
 
-[test]
+[test_vm]
 192.168.1.12
 
-[test:vars]
+[test_vm:vars]
 ansible_user=aholtz
