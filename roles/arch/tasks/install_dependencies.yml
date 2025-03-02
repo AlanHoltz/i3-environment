@@ -1,0 +1,40 @@
+---
+- name: Install i3-wm
+  community.general.pacman:
+    name: i3-wm
+    state: present
+
+# - name: Install neccesary apt packages
+#   ansible.builtin.apt:
+#     pkg:
+#       - i3-wm
+#       - rofi
+#       - polybar
+#       - picom
+#       - neofetch
+#       - htop
+#       - alacritty
+#       - git
+#       - feh
+#       - bat
+#       - redshift
+#       - virtualbox
+#       - direnv
+#       - lxappearance
+#       - openvpn-systemd-resolved
+#     update_cache: true
+#   become: true
+
+# - name: Import tasks
+#   ansible.builtin.import_tasks: install_zsh.yml
+
+# - name: Install Chrome
+#   ansible.builtin.apt:
+#     deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+#   become: true
+
+# - name: Import tasks
+#   ansible.builtin.import_tasks: install_vs_code.yml
+
+# - name: Import tasks
+#   ansible.builtin.import_tasks: install_vagrant.yml

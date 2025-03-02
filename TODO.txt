@@ -1,2 +1,2 @@
-- Crear role de Arch
-- En caso de ser necesario, centralizar lo esencial para ser consumido por ambos roles
+# Para instalar módulo Pacman
+ansible-galaxy collection install community.general
