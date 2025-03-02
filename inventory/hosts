@@ -2,7 +2,7 @@
 localhost ansible_connection=local
 
 [test_vm]
-192.168.1.12
+192.168.1.81
 
 [test_vm:vars]
 ansible_user=aholtz

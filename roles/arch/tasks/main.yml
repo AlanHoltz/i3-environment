@@ -8,11 +8,11 @@
 - name: Import tasks
   ansible.builtin.import_tasks: install_dependencies.yml
 
-- name: Import tasks
-  ansible.builtin.import_tasks: configure_i3.yml
+# - name: Import tasks
+#   ansible.builtin.import_tasks: configure_i3.yml
 
-- name: Import tasks
-  ansible.builtin.import_tasks: copy_config_files.yml
+# - name: Import tasks
+#   ansible.builtin.import_tasks: copy_config_files.yml
 
-- name: Import tasks
-  ansible.builtin.import_tasks: copy_ssh_keys.yml
+# - name: Import tasks
+#   ansible.builtin.import_tasks: copy_ssh_keys.yml

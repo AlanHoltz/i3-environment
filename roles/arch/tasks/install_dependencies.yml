@@ -1,9 +1,25 @@
 ---
-- name: Install i3-wm
+- name: Install neccesary pacman packages
   community.general.pacman:
-    name: i3-wm
+    name:
+      - i3-wm
+      - rofi
+      - polybar
+      - picom
+      - neofetch
+      - htop
+      - alacritty
+      - git
+      - feh
+      - bat
+      - redshift
+      # - virtualbox
+      - direnv
+      # - lxappearance
+      # - openvpn-systemd-resolved
     state: present
-
+  become: true
+    # update_cache: true
 # - name: Install neccesary apt packages
 #   ansible.builtin.apt:
 #     pkg:
