@@ -1,2 +1,2 @@
-# Para instalar módulo Pacman
-ansible-galaxy collection install community.general
+1. Ver si es posible instalar un tema de colores y fonts para GTK3.0
+2. Ver si es posible usar un solo playbook que llame al rol determinado dependiendo la distro

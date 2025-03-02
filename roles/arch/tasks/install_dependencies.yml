@@ -13,10 +13,12 @@
       - feh
       - bat
       - redshift
-      # - virtualbox
+      - virtualbox
+      - virtualbox-host-modules-arch
       - direnv
-      # - lxappearance
-      # - openvpn-systemd-resolved
+      - lxappearance
+      - openvpn
+      - openvpn-update-systemd-resolved
     state: present
   become: true
     # update_cache: true
