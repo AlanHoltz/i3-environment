@@ -6,3 +6,5 @@ Antes de correr playbook:
 
 # Para instalar módulo Pacman
 ansible-galaxy collection install community.general
+# Para instalar módulo AUR
+ansible-galaxy collection install kewlfft.aur

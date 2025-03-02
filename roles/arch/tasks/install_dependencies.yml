@@ -18,30 +18,21 @@
       - direnv
       - lxappearance
       - openvpn
-      - openvpn-update-systemd-resolved
+      - discord
+      - firefox
+      - flameshot
     state: present
   become: true
-    # update_cache: true
-# - name: Install neccesary apt packages
-#   ansible.builtin.apt:
-#     pkg:
-#       - i3-wm
-#       - rofi
-#       - polybar
-#       - picom
-#       - neofetch
-#       - htop
-#       - alacritty
-#       - git
-#       - feh
-#       - bat
-#       - redshift
-#       - virtualbox
-#       - direnv
-#       - lxappearance
-#       - openvpn-systemd-resolved
-#     update_cache: true
-#   become: true
+
+- name: Install neccesary AUR dependencies
+  kewlfft.aur.aur:
+    use: makepkg
+    name:
+      - openvpn-update-systemd-resolved
+    update_cache: true
+
+- name: Import tasks
+  ansible.builtin.import_tasks: install_bluetooth.yml
 
 # - name: Import tasks
 #   ansible.builtin.import_tasks: install_zsh.yml
