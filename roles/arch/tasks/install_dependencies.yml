@@ -21,6 +21,7 @@
       - discord
       - firefox
       - flameshot
+      - arandr
     state: present
   become: true
 
