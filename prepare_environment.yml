@@ -1,0 +1,18 @@
+---
+- name: Prepare environment with i3-wm
+  hosts: "{{ target | default('ubuntu_test_vm') }}"
+  vars_files:
+    - vars/ssh_keys.yml
+    - vars/common.yml
+  tasks:
+    - name: Prepare Ubuntu-based environment with i3-wm
+      ansible.builtin.include_role:
+        name: ubuntu
+      when: ansible_facts["os_family"] == "Debian"
+      
+    
+    - name: Prepare Arch-based environment with i3-wm
+      ansible.builtin.include_role:
+        name: arch
+      when: ansible_facts["os_family"] == "Archlinux"
+

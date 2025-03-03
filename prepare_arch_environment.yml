@@ -1,9 +1,0 @@
----
-- name: Prepare Arch-based 13-wm environment
-  hosts: test_vm
-  roles:
-    - arch
-  vars_files:
-    - vars/ssh_keys.yml
-    - vars/common.yml
-  gather_facts: false

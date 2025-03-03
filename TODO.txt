@@ -1,4 +1,2 @@
 1. Ver si es posible instalar un tema de colores y fonts para GTK3.0
-2. Ver si es posible usar un solo playbook que llame al rol determinado dependiendo la distro
 3. Construir .config files custom a partir de templates
-4. Ver dependencias faltantes entre ambas distros (Ejemplo: Discord, DBeaver)
