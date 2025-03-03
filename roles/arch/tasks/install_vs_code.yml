@@ -1,0 +1,28 @@
+---
+- name: Install Visual Studio Code
+  kewlfft.aur.aur:
+    use: makepkg
+    name: visual-studio-code-bin
+    update_cache: true
+
+- name: Install Visual Studio Code extensions
+  ansible.builtin.shell: "code --install-extension {{ item }}"
+  changed_when: false
+  loop:
+    - redhat.ansible
+    - eamodio.gitlens
+    - s-nlf-fh.glassit
+    - pkief.material-icon-theme
+    - ms-python.vscode-pylance
+    - ms-python.python
+    - ms-python.debugpy
+    - ms-vscode-remote.remote-ssh
+    - ms-vscode-remote.remote-ssh-edit
+    - ms-vscode.remote-explorer
+    - ajshortt.tokyo-hack
+    - redhat.vscode-yaml
+    - bscan.perlnavigator
+    - charliermarsh.ruff
+    - batisteo.vscode-django
+    - monosans.djlint
+    - esbenp.prettier-vscode

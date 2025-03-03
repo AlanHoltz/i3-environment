@@ -1,0 +1,23 @@
+---
+- name: Install neccesary bluetooth packages
+  community.general.pacman:
+    name:
+      - bluez
+      - bluez-utils
+      - bluez-deprecated-tools
+      - blueberry
+    state: present
+  become: true
+
+- name: Add btusb kernel module
+  community.general.modprobe:
+    name: btusb
+    state: present
+  become: true
+
+- name: Start and enable bluetooth service
+  ansible.builtin.systemd_service:
+    name: bluetooth
+    state: started
+    enabled: true
+  become: true

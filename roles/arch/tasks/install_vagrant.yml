@@ -1,0 +1,12 @@
+---
+- name: Install Vagrant
+  community.general.pacman:
+    name: vagrant
+    state: present
+  become: true
+
+- name: Install Vagrant plugins
+  ansible.builtin.command: vagrant plugin install vagrant-vbguest vagrant-disksize
+  changed_when: false
+  environment:
+    VAGRANT_DISABLE_STRICT_DEPENDENCY_ENFORCEMENT: "1"

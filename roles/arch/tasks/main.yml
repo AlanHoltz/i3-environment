@@ -1,18 +1,18 @@
 ---
-- name: Create config directory
-  ansible.builtin.file:
-    path: "{{ user_home }}/.config"
-    state: directory
-    mode: "0755"
+- name: Import tasks
+  ansible.builtin.import_tasks: create_directories.yml
 
 - name: Import tasks
   ansible.builtin.import_tasks: install_dependencies.yml
 
-# - name: Import tasks
-#   ansible.builtin.import_tasks: configure_i3.yml
+- name: Import tasks
+  ansible.builtin.import_tasks: configure_bluetooth.yml
 
-# - name: Import tasks
-#   ansible.builtin.import_tasks: copy_config_files.yml
+- name: Import tasks
+  ansible.builtin.import_tasks: configure_i3.yml
 
-# - name: Import tasks
-#   ansible.builtin.import_tasks: copy_ssh_keys.yml
+- name: Import tasks
+  ansible.builtin.import_tasks: copy_config_files.yml
+
+- name: Import tasks
+  ansible.builtin.import_tasks: copy_ssh_keys.yml

@@ -33,6 +33,11 @@
     deb: https://discord.com/api/download?platform=linux
   become: true
 
+- name: Install Dbeaver
+  ansible.builtin.apt:
+    deb: https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
+  become: true
+
 - name: Import tasks
   ansible.builtin.import_tasks: install_vs_code.yml
 

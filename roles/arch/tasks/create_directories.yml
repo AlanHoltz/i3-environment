@@ -1,0 +1,12 @@
+---
+- name: Create .config directory
+  ansible.builtin.file:
+    path: "{{ user_home }}/.config"
+    state: directory
+    mode: "0755"
+
+- name: Create Downloads directory
+  ansible.builtin.file:
+    path: "{{ user_home }}/Downloads"
+    state: directory
+    mode: "0755"

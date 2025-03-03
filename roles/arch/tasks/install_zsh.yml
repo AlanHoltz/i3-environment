@@ -1,0 +1,46 @@
+---
+- name: Install zsh
+  community.general.pacman:
+    name: zsh
+    state: present
+  become: true
+
+- name: Set zsh as default shell
+  ansible.builtin.shell: "chsh -s $(which zsh) {{ user_name }}"
+  changed_when: false
+  become: true
+
+- name: Delete oh-my-zsh current directory
+  ansible.builtin.file:
+    path: "{{ user_home }}/.oh-my-zsh"
+    state: absent
+
+- name: Delete .zshrc current file
+  ansible.builtin.file:
+    path: "{{ user_home }}/.oh-my-zsh"
+    state: absent
+
+- name: Install oh-my-zsh
+  ansible.builtin.shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  changed_when: false
+  environment:
+    RUNZSH: "no"
+    CHSH: "no"
+
+- name: Install zsh-autosuggestions plugin
+  ansible.builtin.git:
+    repo: "https://github.com/zsh-users/zsh-autosuggestions"
+    dest: "{{ user_home }}/.oh-my-zsh/plugins/zsh-autosuggestions"
+    version: master
+
+- name: Install zsh-syntax-highlighting plugin
+  ansible.builtin.git:
+    repo: "https://github.com/zsh-users/zsh-syntax-highlighting"
+    dest: "{{ user_home }}/.oh-my-zsh/plugins/zsh-syntax-highlighting"
+    version: master
+
+- name: Install fast-syntax-highlighting plugin
+  ansible.builtin.git:
+    repo: "https://github.com/zdharma-continuum/fast-syntax-highlighting"
+    dest: "{{ user_home }}/.oh-my-zsh/plugins/fast-syntax-highlighting"
+    version: master

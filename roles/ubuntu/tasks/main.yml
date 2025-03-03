@@ -1,5 +1,5 @@
 ---
-- name: Create config directory
+- name: Create .config directory
   ansible.builtin.file:
     path: "{{ user_home }}/.config"
     state: directory
