@@ -1,6 +1,10 @@
 ---
 - name: Prepare environment with i3-wm
-  hosts: "{{ target | default('ubuntu_test_vm') }}"
+  hosts: "{{ target_host }}"
+  vars_prompt:
+    - name: target_host
+      prompt: Target host
+      private: false
   vars_files:
     - vars/ssh_keys.yml
     - vars/common.yml
