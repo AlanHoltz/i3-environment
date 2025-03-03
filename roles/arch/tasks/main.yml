@@ -12,6 +12,9 @@
   ansible.builtin.import_tasks: configure_i3.yml
 
 - name: Import tasks
+  ansible.builtin.import_tasks: install_gtk_theme.yml
+
+- name: Import tasks
   ansible.builtin.import_tasks: copy_config_files.yml
 
 - name: Import tasks

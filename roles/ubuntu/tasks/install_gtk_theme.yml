@@ -1,0 +1,39 @@
+- name: Download Dracula color theme zip file
+  ansible.builtin.get_url:
+    url: https://github.com/dracula/gtk/archive/master.zip
+    dest: "{{ user_home }}/.themes/dracula-theme.zip"
+    mode: "0744"
+
+- name: Extract Dracula color theme zip file
+  ansible.builtin.unarchive:
+    src: "{{ user_home }}/.themes/dracula-theme.zip"
+    dest: "{{ user_home }}/.themes"
+    remote_src: true
+
+- name: Rename Dracula color theme main directory
+  ansible.builtin.command: "mv gtk-master Dracula"
+  changed_when: false
+  args:
+    chdir: "{{ user_home }}/.themes"
+
+- name: Delete Dracula color theme zip file
+  ansible.builtin.file:
+    path: "{{ user_home }}/.themes/dracula-theme.zip"
+    state: absent
+
+- name: Download Dracula icons theme zip file
+  ansible.builtin.get_url:
+    url: https://github.com/dracula/gtk/files/5214870/Dracula.zip
+    dest: "{{ user_home }}/.icons/dracula-icons-theme.zip"
+    mode: "0744"
+
+- name: Extract Dracula icons theme zip file
+  ansible.builtin.unarchive:
+    src: "{{ user_home }}/.icons/dracula-icons-theme.zip"
+    dest: "{{ user_home }}/.icons"
+    remote_src: true
+
+- name: Delete Dracula icons theme zip file
+  ansible.builtin.file:
+    path: "{{ user_home }}/.icons/dracula-icons-theme.zip"
+    state: absent

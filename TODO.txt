@@ -1,2 +1,2 @@
-1. Ver si es posible instalar un tema de colores y fonts para GTK3.0
-3. Construir .config files custom a partir de templates
+[ ] Instalar burpsuite para Ubuntu
+[ ] Construir .config files custom a partir de templates

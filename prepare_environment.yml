@@ -10,13 +10,12 @@
     - vars/common.yml
   tasks:
     - name: Prepare Ubuntu-based environment with i3-wm
-      ansible.builtin.include_role:
+      ansible.builtin.import_role:
         name: ubuntu
       when: ansible_facts["os_family"] == "Debian"
-      
     
     - name: Prepare Arch-based environment with i3-wm
-      ansible.builtin.include_role:
+      ansible.builtin.import_role:
         name: arch
       when: ansible_facts["os_family"] == "Archlinux"
 
