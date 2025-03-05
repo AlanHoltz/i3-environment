@@ -26,6 +26,8 @@
       - dbeaver
       - zip
       - unzip
+      - dunst
+      - ripgrep
     state: present
   become: true
 
