@@ -17,6 +17,7 @@
       - direnv
       - lxappearance
       - openvpn-systemd-resolved
+      - dunst
     update_cache: true
   become: true
 

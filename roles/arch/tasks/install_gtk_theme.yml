@@ -1,3 +1,4 @@
+---
 - name: Download Dracula color theme zip file
   ansible.builtin.get_url:
     url: https://github.com/dracula/gtk/archive/master.zip
@@ -21,19 +22,8 @@
     path: "{{ user_home }}/.themes/dracula-theme.zip"
     state: absent
 
-- name: Download Dracula icons theme zip file
-  ansible.builtin.get_url:
-    url: https://github.com/dracula/gtk/files/5214870/Dracula.zip
-    dest: "{{ user_home }}/.icons/dracula-icons-theme.zip"
-    mode: "0744"
-
-- name: Extract Dracula icons theme zip file
-  ansible.builtin.unarchive:
-    src: "{{ user_home }}/.icons/dracula-icons-theme.zip"
-    dest: "{{ user_home }}/.icons"
-    remote_src: true
-
-- name: Delete Dracula icons theme zip file
-  ansible.builtin.file:
-    path: "{{ user_home }}/.icons/dracula-icons-theme.zip"
-    state: absent
+- name: Install Papirus icon theme
+  community.general.pacman:
+    name: papirus-icon-theme
+    state: present
+  become: true

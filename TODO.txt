@@ -1,2 +1,1 @@
-[ ] Instalar burpsuite para Ubuntu
 [ ] Construir .config files custom a partir de templates

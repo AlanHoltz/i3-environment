@@ -28,6 +28,8 @@
       - unzip
       - dunst
       - ripgrep
+      - papirus-icon-theme
+      - pavucontrol
     state: present
   become: true
 
