@@ -30,6 +30,7 @@
       - ripgrep
       - papirus-icon-theme
       - pavucontrol
+      - ttf-font-awesome
     state: present
   become: true
 

@@ -29,3 +29,6 @@
   changed_when: false
   environment:
     DISPLAY: :0
+
+- name: Import tasks
+  ansible.builtin.import_tasks: install_font_awesome_icons.yml

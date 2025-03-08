@@ -1,0 +1,21 @@
+---
+
+- name: Copy Font Awesome icons zip
+  ansible.builtin.copy:
+    src: TTF.zip
+    dest: "/usr/share/fonts/"
+    mode: "0744"
+  become: true
+
+- name: Extract Font Awesome icons
+  ansible.builtin.unarchive:
+    src: "/usr/share/fonts/TTF.zip"
+    dest: "/usr/share/fonts/"
+    remote_src: true
+  become: true
+
+- name: Delete Font Awesome icons zip
+  ansible.builtin.file:
+    path: "/usr/share/fonts/TTF.zip"
+    state: absent
+  become: true
