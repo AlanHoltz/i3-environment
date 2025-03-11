@@ -18,6 +18,8 @@
       - lxappearance
       - openvpn-systemd-resolved
       - dunst
+      - arandr
+      - pavucontrol
     update_cache: true
   become: true
 
