@@ -15,7 +15,7 @@
 
 - name: Copy initial background image
   ansible.builtin.copy:
-    src: initial_bg.png
+    src: ../../shared/files/initial_bg.png
     dest: "{{ user_home }}/Downloads"
     mode: "0744"
 

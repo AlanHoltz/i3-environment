@@ -1,12 +1,26 @@
 ---
-- name: Copy config files zip
+- name: Copy base config files zip
   ansible.builtin.copy:
-    src: config.zip
+    src: ../../shared/files/base_config.zip
     dest: "/tmp"
     mode: "0744"
 
-- name: Extract config files
+- name: Extract base config files
   ansible.builtin.unarchive:
-    src: "/tmp/config.zip"
+    src: "/tmp/base_config.zip"
     dest: "{{ user_home }}"
     remote_src: true
+
+- name: Copy config template files
+  ansible.builtin.template:
+    src: "../../shared/templates/{{ item.src }}"
+    dest: "{{ user_home }}/.config/{{ item.dest }}"
+    mode: "0644"
+  loop:
+    - { src: "alacritty.j2", dest: "alacritty/alacritty.toml" }
+    - { src: "dunstrc.j2", dest: "dunst/dunstrc" }
+    - { src: "i3_config.j2", dest: "i3/config" }
+    - { src: "rofi_colors.j2", dest: "rofi/colors/custom.rasi" }
+    - { src: "polybar_bars.j2", dest: "polybar/custom/bars.ini" }
+    - { src: "polybar_colors.j2", dest: "polybar/custom/colors.ini" }
+    - { src: "polybar_modules.j2", dest: "polybar/custom/modules.ini" }
