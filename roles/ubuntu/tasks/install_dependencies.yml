@@ -20,6 +20,7 @@
       - dunst
       - arandr
       - pavucontrol
+      - flameshot
     update_cache: true
   become: true
 
