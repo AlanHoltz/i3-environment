@@ -111,7 +111,7 @@
     frame_width = 4
 
     # Defines color of the frame around the notification window.
-    frame_color = "#0f0b12"
+    frame_color = "{{ secondary_color }}"
 
     # Size of gap to display between notifications - requires a compositor.
     # If value is greater than 0, separator_height will be ignored and a border
@@ -348,7 +348,7 @@
     default_icon = dialog-information
 
 [urgency_normal]
-    background = "#1f1626"
+    background = "{{ primary_color }}"
     foreground = "#ffffff"
     timeout = 10
     override_pause_level = 30

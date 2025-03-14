@@ -119,7 +119,7 @@ type = internal/backlight
 ; Use the following command to list available cards:
 ; $ ls -1 /sys/class/backlight/
 ;card = intel_backlight
-card = nvidia_wmi_ec_backlight
+card = {{ backlight_card }}
 
 ; Available tags:
 ;   <label> (default)
@@ -175,8 +175,8 @@ full-at = 99
 
 ; Use the following command to list batteries and adapters:
 ; $ ls -1 /sys/class/power_supply/
-battery = BAT0
-adapter = ADP0
+battery = {{ battery }}
+adapter = {{ adapter }}
 
 ; If an inotify event haven't been reported in this many
 ; seconds, manually poll for new values.

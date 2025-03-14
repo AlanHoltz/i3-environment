@@ -1,0 +1,29 @@
+---
+- name: List all available backlight cards
+  ansible.builtin.shell: ls -1 /sys/class/backlight | head -n 1
+  register: backlight_cards
+  changed_when: false
+
+- name: Set backlight card fact
+  ansible.builtin.set_fact:
+    backlight_card: "{{ backlight_cards.stdout_lines | first | default('intel_backlight') }}"
+
+- name: List all available batteries and adapters
+  ansible.builtin.command: ls /sys/class/power_supply
+  register: power_supply_list
+  changed_when: false
+
+- name: Set batteries and adapters names list fact
+  ansible.builtin.set_fact:
+    power_device_names: "{{ power_supply_list.stdout.split() }}"
+
+- name: List every batteries and adapters types
+  ansible.builtin.command: cat /sys/class/power_supply/{{ item }}/type
+  register: device_types
+  loop: "{{ power_device_names }}"
+  changed_when: false
+
+- name: Set battery and adapter fact
+  ansible.builtin.set_fact:
+    battery: "{{ (device_types.results | selectattr('stdout', 'equalto', 'Battery') | map(attribute='item') | list)[0] | default('None') }}"
+    adapter: "{{ (device_types.results | selectattr('stdout', 'equalto', 'Mains') | map(attribute='item') | list)[0] | default('None') }}"

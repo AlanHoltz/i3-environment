@@ -12,7 +12,7 @@ type = internal/tray
 tray-position = right
 tray-detached = false
 tray-maxsize = 16
-tray-background = ${color.background-alt}
+tray-background = ${color.background}
 tray-padding = 0
 tray-scale = 1.0
 
@@ -103,7 +103,7 @@ type = internal/backlight
 ; Use the following command to list available cards:
 ; $ ls -1 /sys/class/backlight/
 ;card = intel_backlight
-card = nvidia_wmi_ec_backlight
+card = {{ backlight_card }}
 
 ; Available tags:
 ;   <label> (default)
@@ -134,8 +134,8 @@ full-at = 98
 
 ; Use the following command to list batteries and adapters:
 ; $ ls -1 /sys/class/power_supply/
-battery = BAT0
-adapter = ADP0
+battery = {{ battery }}
+adapter = {{ adapter }}
 
 ; If an inotify event haven't been reported in this many
 ; seconds, manually poll for new values.
@@ -568,8 +568,8 @@ ws-icon-default = 
 ; label-mode-background =#e60053
 
 label-mode = %mode%
-label-mode-background =#0f0b12
-label-mode-foreground =#ff008c
+label-mode-background = {{ secondary_color }}
+label-mode-foreground = #ff008c
 
 ; Available tokens:
 ;   %name%
@@ -580,7 +580,7 @@ label-mode-foreground =#ff008c
 label-focused = %index%: %icon%
 label-focused-foreground =#ff008c
 label-focused-overline =#ff008c
-label-focused-background = #0f0b12
+label-focused-background = {{ secondary_color }}
 label-focused-padding = 1
 
 ; Available tokens:
@@ -591,7 +591,7 @@ label-focused-padding = 1
 ; Default: %icon%  %name%
 label-unfocused = %index%: %icon%
 label-unfocused-padding = 1
-label-unfocused-background = #0f0b12
+label-unfocused-background = {{ secondary_color }}
 
 ; Available tokens:
 ;   %name%
@@ -601,7 +601,7 @@ label-unfocused-background = #0f0b12
 ; Default: %icon%  %name%
 label-visible = %index%: %icon%
 label-visible-padding = 1
-label-visible-background = #0f0b12
+label-visible-background = {{ secondary_color }}
 
 ; Available tokens:
 ;   %name%
@@ -615,7 +615,7 @@ label-urgent-background =#4b0000
 
 ; Separator in between workspaces
 label-separator = " "
-label-separator-background= #0f0b12
+label-separator-background= {{ secondary_color }}
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
