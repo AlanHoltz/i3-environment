@@ -1,6 +1,7 @@
 ---
 - name: Install Visual Studio Code
   ansible.builtin.script: install_vs_code.sh
+  become: true
 
 - name: Install Visual Studio Code extensions
   ansible.builtin.shell: "code --install-extension {{ item }}"

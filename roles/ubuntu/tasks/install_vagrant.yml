@@ -1,6 +1,7 @@
 ---
 - name: Install Vagrant
   ansible.builtin.script: install_vagrant.sh
+  become: true
 
 - name: Install Vagrant plugins
   ansible.builtin.command: vagrant plugin install vagrant-vbguest vagrant-disksize
