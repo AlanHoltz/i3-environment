@@ -1,0 +1,48 @@
+#!/bin/sh
+
+PRIMARY='{{ primary_color }}'
+SECONDARY='{{ secondary_color }}'
+TERTIARY='{{ tertiary_color }}'
+DANGER='{{ danger_color }}'
+BLANK='#00000000'
+
+i3lock \
+--insidever-color=$BLANK     \
+--ringver-color=$TERTIARY   \
+\
+--insidewrong-color=$BLANK   \
+--ringwrong-color=$DANGER     \
+\
+--inside-color=$BLANK        \
+--ring-color=$TERTIARY        \
+--line-color=$BLANK          \
+--separator-color=$TERTIARY   \
+\
+--verif-color=$TERTIARY          \
+--wrong-color=$DANGER          \
+--time-color=$TERTIARY           \
+--date-color=$TERTIARY           \
+--layout-color=$TERTIARY         \
+--keyhl-color=$PRIMARY         \
+--bshl-color=$PRIMARY          \
+\
+--blur 5                     \
+--clock                      \
+--indicator                  \
+--time-str="%H:%M:%S"        \
+--date-str="%d/%m/%Y"        \
+--no-modkey-text             \
+--ring-width=3.0               \
+\
+--verif-text="Verifying..."  \
+--wrong-text="Wrong!"        \
+--noinput-text="No input"    \
+--lock-text="Locking…"       \
+--lockfailed-text="Lock failed!"   \
+\
+--time-font=Iosevka Nerd Font    \
+--date-font=Iosevka Nerd Font    \
+--layout-font=Iosevka Nerd Font  \
+--verif-font=Iosevka Nerd Font   \
+--wrong-font=Iosevka Nerd Font   \
+--greeter-font=Iosevka Nerd Font \

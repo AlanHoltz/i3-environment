@@ -21,6 +21,7 @@
       - arandr
       - pavucontrol
       - flameshot
+      - xss-lock
     update_cache: true
   become: true
 
@@ -37,7 +38,7 @@
     deb: https://discord.com/api/download?platform=linux
   become: true
 
-- name: Install Dbeaver
+- name: Install DBeaver
   ansible.builtin.apt:
     deb: https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
   become: true

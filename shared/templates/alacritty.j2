@@ -1,4 +1,6 @@
-{% if ansible_os_family == "Archlinux" %}[general]{% endif %}
+{% if ansible_os_family == "Archlinux" %}
+[general]
+{% endif %}
 import = ["~/.config/alacritty/themes/themes/ayu_mirage.toml"]
 {{ primary_color }}
 [window]

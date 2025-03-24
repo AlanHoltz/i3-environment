@@ -27,3 +27,7 @@
 
 - name: Import tasks
   ansible.builtin.import_tasks: install_font_awesome_icons.yml
+
+- name: Install i3lock-color
+  ansible.builtin.script: install_i3lock-color.sh
+  become: true

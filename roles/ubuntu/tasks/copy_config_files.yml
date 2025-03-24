@@ -15,12 +15,13 @@
   ansible.builtin.template:
     src: "../../shared/templates/{{ item.src }}"
     dest: "{{ user_home }}/.config/{{ item.dest }}"
-    mode: "0644"
+    mode: "{{ item.mode }}"
   loop:
-    - { src: "alacritty.j2", dest: "alacritty/alacritty.toml" }
-    - { src: "dunstrc.j2", dest: "dunst/dunstrc" }
-    - { src: "i3_config.j2", dest: "i3/config" }
-    - { src: "rofi_colors.j2", dest: "rofi/colors/custom.rasi" }
-    - { src: "polybar_bars.j2", dest: "polybar/custom/bars.ini" }
-    - { src: "polybar_colors.j2", dest: "polybar/custom/colors.ini" }
-    - { src: "polybar_modules.j2", dest: "polybar/custom/modules.ini" }
+    - { src: "alacritty.j2", dest: "alacritty/alacritty.toml", mode: "0644" }
+    - { src: "dunstrc.j2", dest: "dunst/dunstrc", mode: "0644" }
+    - { src: "i3_config.j2", dest: "i3/config", mode: "0644" }
+    - { src: "i3_lock.j2", dest: "i3lock/lock.sh", mode: "0744" }
+    - { src: "rofi_colors.j2", dest: "rofi/colors/custom.rasi", mode: "0644" }
+    - { src: "polybar_bars.j2", dest: "polybar/custom/bars.ini", mode: "0644" }
+    - { src: "polybar_colors.j2", dest: "polybar/custom/colors.ini", mode: "0644" }
+    - { src: "polybar_modules.j2", dest: "polybar/custom/modules.ini", mode: "0644" }
