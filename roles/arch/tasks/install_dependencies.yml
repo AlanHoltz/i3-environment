@@ -42,6 +42,7 @@
       - google-chrome
       - burpsuite
       - openvpn-update-systemd-resolved
+      - openoffice-bin
     update_cache: true
 
 - name: Import tasks
