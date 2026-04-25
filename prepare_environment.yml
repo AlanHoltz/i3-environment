@@ -12,9 +12,6 @@
 
 - name: Prepare environment with i3-wm
   hosts: all
-  vars_files:
-    - vars/ssh_keys.yml
-    - vars/common.yml
   tasks:
     - name: Run common prepare phase
       ansible.builtin.import_role:

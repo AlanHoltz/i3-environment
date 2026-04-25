@@ -63,7 +63,7 @@ This split exists because order matters around `configure_i3`: that step clones 
 ### Shared assets (`shared/`)
 
 - `shared/templates/*.j2` — Jinja2 templates for alacritty, dunst, i3, i3lock, rofi, polybar (bars/colors/modules). They consume:
-  - Color variables from `vars/common.yml` (`primary_color`, `secondary_color`, `tertiary_color`, `danger_color`).
+  - Color variables from `inventory/group_vars/all/main.yml` (`primary_color`, `secondary_color`, `tertiary_color`, `danger_color`).
   - The auto-detected hardware facts (`backlight_card`, `battery`, `adapter`) in `polybar_modules.j2`.
   - The group var `enable_picom` (defaulted to `true` in the template) in `i3_config.j2`.
 - `shared/files/base_config.zip` — pre-built tree of dotfiles unpacked into `$HOME`. Templates overlay specific files on top of this.
@@ -71,8 +71,10 @@ This split exists because order matters around `configure_i3`: that step clones 
 
 ### Variables
 
-- `vars/common.yml` — non-secret defaults (`user_name`, `user_home`, theme colors). `user_home` is derived from `user_name`, so changing the username flows through.
-- `vars/ssh_keys.yml` — **vault-encrypted**. Contains `user_ssh_private_key` and `user_ssh_public_key`, consumed by `copy_ssh_keys.yml`. Edit with `ansible-vault edit vars/ssh_keys.yml`.
+All vars live under `inventory/group_vars/` and are auto-loaded by ansible — no `vars_files:` plumbing in the playbook.
+
+- `inventory/group_vars/all/main.yml` — non-secret defaults visible to every host (`user_name`, `user_home`, theme colors). `user_home` is derived from `user_name`, so changing the username flows through.
+- `inventory/group_vars/all/ssh_keys.yml` — **vault-encrypted**. Contains `user_ssh_private_key` and `user_ssh_public_key`, consumed by `copy_ssh_keys.yml`. Edit with `ansible-vault edit inventory/group_vars/all/ssh_keys.yml`.
 - `inventory/group_vars/dev_vms.yml` — `ansible_user` and `enable_picom: false` (picom causes tearing on VMs without GPU passthrough).
 
 ## Conventions when editing
