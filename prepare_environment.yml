@@ -1,4 +1,15 @@
 ---
+- name: Require -l to scope the run
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Ensure -l <target> was passed
+      ansible.builtin.assert:
+        that: ansible_limit is defined
+        fail_msg: |
+          Pass -l <target> to choose which host(s) to provision.
+          Available targets: local, ubuntu_test_vms, arch_test_vms, dev_vms.
+
 - name: Prepare environment with i3-wm
   hosts: all
   vars_files:
