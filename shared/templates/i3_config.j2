@@ -192,9 +192,9 @@ bindsym $mod+Shift+l exec --no-startup-id ~/.config/i3lock/lock.sh
 exec --no-startup-id ~/.config/polybar/custom/launch.sh
 
 exec --no-startup-id setxkbmap latam
-
+{% if enable_picom | default(true) %}
 exec --no-startup-id picom &
-
+{% endif %}
 exec --no-startup-id xrandr --output eDP-1 --mode 1920x1080 --output HDMI-1-0 --mode 1920x1080 --same-as eDP-1
 
 exec --no-startup-id ~/.fehbg &
