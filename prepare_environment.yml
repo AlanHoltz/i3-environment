@@ -23,3 +23,8 @@
       ansible.builtin.import_role:
         name: arch
       when: ansible_facts['os_family'] == 'Archlinux'
+
+    - name: Run common finalize phase
+      ansible.builtin.import_role:
+        name: common
+        tasks_from: finalize
