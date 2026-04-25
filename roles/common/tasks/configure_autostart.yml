@@ -1,0 +1,23 @@
+---
+- name: Ensure autostart directory exists
+  ansible.builtin.file:
+    path: "{{ user_home }}/.config/autostart"
+    state: directory
+    mode: "0755"
+
+- name: Suppress picom xdg autostart when enable_picom is false
+  ansible.builtin.copy:
+    dest: "{{ user_home }}/.config/autostart/picom.desktop"
+    mode: "0644"
+    content: |
+      [Desktop Entry]
+      Type=Application
+      Name=picom
+      Hidden=true
+  when: not (enable_picom | default(true))
+
+- name: Restore picom xdg autostart when enable_picom is true
+  ansible.builtin.file:
+    path: "{{ user_home }}/.config/autostart/picom.desktop"
+    state: absent
+  when: enable_picom | default(true)

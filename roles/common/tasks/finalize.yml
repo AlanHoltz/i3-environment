@@ -2,5 +2,8 @@
 - name: Copy config files
   ansible.builtin.import_tasks: copy_config_files.yml
 
+- name: Configure xdg autostart
+  ansible.builtin.import_tasks: configure_autostart.yml
+
 - name: Copy SSH keys
   ansible.builtin.import_tasks: copy_ssh_keys.yml
