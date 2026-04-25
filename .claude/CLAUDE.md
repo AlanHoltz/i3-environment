@@ -22,7 +22,7 @@ Run against a host from `inventory/hosts` (the playbook prompts for `target_host
 ansible-playbook prepare_environment.yml -i inventory/hosts --ask-vault-password --ask-become-pass
 ```
 
-Inventory groups: `local` (localhost), `ubuntu_test_vm`, `arch_test_vm`, and `dev_vms` (which is the union of both VMs and sets `enable_picom=false`). When prompted for `target_host`, enter one of these group names.
+Inventory groups: `local` (localhost), `ubuntu_test_vms`, `arch_test_vms`, and `dev_vms` (which is the union of both VMs and sets `enable_picom=false` plus the shared `ansible_user`). When prompted for `target_host`, enter one of these group names. Group vars live in `inventory/group_vars/<group>.yml`.
 
 `vault_password.txt` is gitignored — it's referenced by ansible.cfg conventions but you should still pass `--ask-vault-password` interactively unless the user explicitly tells you otherwise.
 

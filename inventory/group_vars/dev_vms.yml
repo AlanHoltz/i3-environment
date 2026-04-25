@@ -1,0 +1,5 @@
+---
+ansible_user: aholtz
+
+# Picom causes tearing and CPU spikes on VMs without GPU passthrough.
+enable_picom: false
