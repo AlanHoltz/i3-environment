@@ -1,8 +1,50 @@
 ---
+- name: Install Vagrant apt prerequisites
+  ansible.builtin.apt:
+    name:
+      - wget
+      - gpg
+    state: present
+  become: true
+
+- name: Add HashiCorp GPG key
+  ansible.builtin.get_url:
+    url: https://apt.releases.hashicorp.com/gpg
+    dest: /usr/share/keyrings/hashicorp-archive-keyring.asc
+    owner: root
+    group: root
+    mode: "0644"
+  become: true
+
+- name: Resolve upstream Ubuntu codename
+  ansible.builtin.shell: ". /etc/os-release && echo \"$UBUNTU_CODENAME\""
+  register: ubuntu_codename
+  changed_when: false
+
+- name: Add HashiCorp apt repository
+  ansible.builtin.deb822_repository:
+    name: hashicorp
+    types: deb
+    uris: https://apt.releases.hashicorp.com
+    suites: "{{ ubuntu_codename.stdout }}"
+    components: main
+    signed_by: /usr/share/keyrings/hashicorp-archive-keyring.asc
+    state: present
+  become: true
+
 - name: Install Vagrant
-  ansible.builtin.script: install_vagrant.sh
+  ansible.builtin.apt:
+    name: vagrant
+    state: present
+    update_cache: true
   become: true
 
 - name: Install Vagrant plugins
-  ansible.builtin.command: vagrant plugin install vagrant-vbguest vagrant-disksize
-  changed_when: false
+  ansible.builtin.command: "vagrant plugin install {{ item }}"
+  register: vagrant_plugin
+  changed_when: "'is already installed' not in vagrant_plugin.stdout"
+  environment:
+    VAGRANT_DISABLE_STRICT_DEPENDENCY_ENFORCEMENT: "1"
+  loop:
+    - vagrant-vbguest
+    - vagrant-disksize
