@@ -1,24 +1,18 @@
 ---
-- name: Import tasks
-  ansible.builtin.import_tasks: set_custom_facts.yml
-
-- name: Import tasks
-  ansible.builtin.import_tasks: create_directories.yml
-
-- name: Import tasks
+- name: Install distro dependencies
   ansible.builtin.import_tasks: install_dependencies.yml
 
-- name: Import tasks
+- name: Configure bluetooth
   ansible.builtin.import_tasks: configure_bluetooth.yml
 
-- name: Import tasks
+- name: Configure i3
   ansible.builtin.import_tasks: configure_i3.yml
 
-- name: Import tasks
+- name: Install GTK theme
   ansible.builtin.import_tasks: install_gtk_theme.yml
 
-- name: Import tasks
+- name: Copy config files
   ansible.builtin.import_tasks: copy_config_files.yml
 
-- name: Import tasks
+- name: Copy SSH keys
   ansible.builtin.import_tasks: copy_ssh_keys.yml

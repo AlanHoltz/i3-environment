@@ -9,13 +9,17 @@
     - vars/ssh_keys.yml
     - vars/common.yml
   tasks:
-    - name: Prepare Ubuntu-based environment with i3-wm
-      ansible.builtin.include_role:
-        name: ubuntu
-      when: ansible_facts["os_family"] == "Debian"
-    
-    - name: Prepare Arch-based environment with i3-wm
-      ansible.builtin.include_role:
-        name: arch
-      when: ansible_facts["os_family"] == "Archlinux"
+    - name: Run common prepare phase
+      ansible.builtin.import_role:
+        name: common
+        tasks_from: prepare
 
+    - name: Prepare Ubuntu-based environment with i3-wm
+      ansible.builtin.import_role:
+        name: ubuntu
+      when: ansible_facts['os_family'] == 'Debian'
+
+    - name: Prepare Arch-based environment with i3-wm
+      ansible.builtin.import_role:
+        name: arch
+      when: ansible_facts['os_family'] == 'Archlinux'

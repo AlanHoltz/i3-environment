@@ -1,0 +1,6 @@
+---
+- name: Detect host hardware (backlight, battery, adapter)
+  ansible.builtin.import_tasks: set_custom_facts.yml
+
+- name: Create user directories
+  ansible.builtin.import_tasks: create_directories.yml
