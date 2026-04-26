@@ -28,20 +28,27 @@
 - name: Import tasks
   ansible.builtin.import_tasks: install_zsh.yml
 
+- name: Gather installed package facts
+  ansible.builtin.package_facts:
+    manager: apt
+
 - name: Install Chrome
   ansible.builtin.apt:
     deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
   become: true
+  when: "'google-chrome-stable' not in ansible_facts.packages"
 
 - name: Install Discord
   ansible.builtin.apt:
     deb: https://discord.com/api/download?platform=linux
   become: true
+  when: "'discord' not in ansible_facts.packages"
 
 - name: Install DBeaver
   ansible.builtin.apt:
     deb: https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
   become: true
+  when: "'dbeaver-ce' not in ansible_facts.packages"
 
 - name: Import tasks
   ansible.builtin.import_tasks: install_vs_code.yml
