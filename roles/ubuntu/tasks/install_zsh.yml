@@ -16,7 +16,7 @@
 
 - name: Delete .zshrc current file
   ansible.builtin.file:
-    path: "{{ user_home }}/.oh-my-zsh"
+    path: "{{ user_home }}/.zshrc"
     state: absent
 
 - name: Install oh-my-zsh
