@@ -10,17 +10,18 @@
     dest: "/tmp/dracula-theme.zip"
     mode: "0744"
 
+- name: Ensure Dracula theme directory exists
+  ansible.builtin.file:
+    path: "{{ user_home }}/.themes/Dracula"
+    state: directory
+    mode: "0755"
+
 - name: Extract Dracula color theme zip file
   ansible.builtin.unarchive:
     src: "/tmp/dracula-theme.zip"
-    dest: "{{ user_home }}/.themes"
+    dest: "{{ user_home }}/.themes/Dracula"
     remote_src: true
-
-- name: Rename Dracula color theme main directory
-  ansible.builtin.command: "mv gtk-master Dracula"
-  changed_when: false
-  args:
-    chdir: "{{ user_home }}/.themes"
+    extra_opts: [--strip-components=1]
 
 - name: Install Papirus icon theme
   community.general.pacman:
