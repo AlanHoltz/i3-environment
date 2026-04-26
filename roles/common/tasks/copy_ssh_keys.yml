@@ -1,4 +1,10 @@
 ---
+- name: Ensure ~/.ssh directory exists
+  ansible.builtin.file:
+    path: "{{ user_home }}/.ssh"
+    state: directory
+    mode: "0700"
+
 - name: Copy SSH private key
   ansible.builtin.copy:
     content: "{{ user_ssh_private_key }}"
@@ -9,4 +15,4 @@
   ansible.builtin.copy:
     content: "{{ user_ssh_public_key }}"
     dest: "{{ user_home }}/.ssh/id_rsa.pub"
-    mode: "0600"
+    mode: "0644"
